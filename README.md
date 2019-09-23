@@ -1,2 +1,2 @@
-# SSP_Labs
+# SSP Labs
 System Software Practice Labs
