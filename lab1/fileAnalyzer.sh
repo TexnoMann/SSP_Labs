@@ -22,18 +22,8 @@ while IFS= read -r line; do
     fi
   fi
 done < <(find $folder -type f -not -name '.*')
-echo 'List of files:'
-echo ${files_name[@]}
-echo 'List of sizes:'
-echo ${sizes[@]}
-echo 'List of datas:'
-echo ${datatime[@]}
-echo 'List of types:'
-echo ${types[@]}
-echo 'List of video/music times:'
-echo ${video_time[@]}
+
 len_list=${#files_name[@]}
-string="filename,data create,size of file(byte),type,duration(video music)\n"
 for ((i=0;i<len_list;++i))
 do
   string+=${files_name[i]}; string+=","
@@ -43,8 +33,6 @@ do
   string+=${video_time[i]}; string+="\n"
   # echo $string
 done
-printf "\nWrite into csv:\n"
-echo $string
-echo -e $string >.temp.csv
- ssconvert .temp.csv $2
-rm .temp.csv
+printf "\nWrite into csv\n"
+# echo $string
+echo -e $string > $2".xls"
