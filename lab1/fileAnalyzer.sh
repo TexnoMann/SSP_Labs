@@ -14,7 +14,7 @@ out_string="Name,Create data,Size,Extension,Time for video and music"
 sp='/-\|'
 sc=0
 spin() {
-    printf "\r${sp:sc++:1} Finding files..."
+    printf "\r${sp:sc++:1} Search files..."
     ((sc==${#sp})) && sc=0
 }
 endspin() {
@@ -35,7 +35,8 @@ while IFS= read -r line; do
     video_time=("-")
   else
     types=("${files_name#*.}")
-    chk_video=$((ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$line" 2>&1 | tail -n1)| awk -F': ' '{print $NF}')
+    chk_video=$((ffprobe -v error -show_entries format=duration -of \
+     default=noprint_wrappers=1:nokey=1 "$line" 2>&1 | tail -n1)| awk -F': ' '{print $NF}')
     if [[ $chk_video =~ ^[+-]?[0-9]+\.?[0-9]*$ ]] && [ $chk_video != "0.040000" ]; then
       video_time=("$(bc <<< "scale=2; $chk_video/60") Min")
     else
