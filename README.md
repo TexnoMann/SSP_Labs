@@ -31,6 +31,7 @@ Just run it :sunglasses::
 
   Current script add new apt repository and install(If necessary) update go-lang and install go-ipfs in home repository.
 
+#### How to use it
   If you want to run go-ipfs, do :
   ```bash
   cd ~/go/bin
