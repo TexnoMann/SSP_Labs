@@ -22,8 +22,8 @@ if [ -d "update-golang" ]; then
 fi
 cd update-golang
 sudo ./update-golang.sh
-cd ..
 
+cd ..
 export GOPATH=~/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
